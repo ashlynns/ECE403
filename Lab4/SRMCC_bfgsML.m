@@ -21,7 +21,7 @@ k = 1;
 xk = W0(:);
 fk = feval(fname,xk,Dtr,muK);
 f = fk;
-fprintf('iter %1i: loss = %8.2e\n',k-1,fk)
+%fprintf('iter %1i: loss = %8.2e\n',k-1,fk)
 gk = feval(gname,xk,Dtr,muK);
 dk = -gk;
 ak = bt_lsearch2019(xk,dk,fname,gname,Dtr,muK);
@@ -29,7 +29,7 @@ dtk = -ak*gk;
 xk_new = xk + dtk;
 fk = feval(fname,xk_new,Dtr,muK);
 f = [f; fk];
-fprintf('iter %1i: loss = %8.2e\n',k,fk)
+%fprintf('iter %1i: loss = %8.2e\n',k,fk)
 while k < iter
   gk_new = feval(gname,xk_new,Dtr,muK);
   gmk = gk_new - gk;
@@ -50,7 +50,7 @@ while k < iter
   fk = feval(fname,xk_new,Dtr,muK);
   f = [f; fk];
   k = k + 1;
-  fprintf('iter %1i: loss = %8.2e\n',k,fk)
+  %fprintf('iter %1i: loss = %8.2e\n',k,fk)
 end
 Ws = reshape(xk_new,N1,K);
-fprintf('final loss = %8.2e\n',fk)
+%fprintf('final loss = %8.2e\n',fk)
